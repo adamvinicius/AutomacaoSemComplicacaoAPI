@@ -33,9 +33,7 @@ public class ViaCepGetTest {
 		getStatusEndereco(cep);
 		
 	}
-	
-	
-	
+		
 	@Test
 	public void validaLogradouro() {
 		assertEquals("Rua Mauro", getResponse("logradouro"));
