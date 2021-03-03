@@ -19,7 +19,7 @@ public class ViaCepGetTest {
 	public static void setResponse() {
 		baseURI = url;
 		String cep = "04055041";
-		response = getDadosEndereco(cep);
+		getRequest(cep+"/json");
 	}
 	
 	@Test
@@ -27,10 +27,11 @@ public class ViaCepGetTest {
 		
 		baseURI = url;
 		String cep = "04055041";
-		getStatusEndereco(cep);
+		getStatusEndereco(cep+"/json");
 		
-		cep = "06154540";
-		getStatusEndereco(cep);
+		cep = "01214100";
+		String endpoint = cep+"/json";
+		getStatusEndereco(endpoint);
 		
 	}
 		
@@ -67,22 +68,31 @@ public class ViaCepGetTest {
 		return response.getBody().jsonPath().get(key);
 	}
 	
-	private static Response getDadosEndereco(String cep) {
-		return when()
-				.get(cep+"/json")
+	public void validaStatusCode(int status) {
+		assertEquals(status, response.getStatusCode());
+	}
+	
+	public static void getRequest(String endpoint) {
+		response =
+				given()
+				.relaxedHTTPSValidation()
+				.when()
+				.get(endpoint)
 				.then()
 				.extract()
 				.response();
-				
+	}
+	
+	
+
+	public void getStatusEndereco(String endpoint) {
+		getRequest(endpoint);
+		System.out.println(getBody());
+		validaStatusCode(200);
 	}
 
-	private void getStatusEndereco(String cep) {
-		given()
-		.relaxedHTTPSValidation()
-		.when()
-		.get(cep+"/json")
-		.then()
-		.statusCode(200);
+	public static String getBody() {
+		return response.getBody().asString();
 	}
 	
 	
