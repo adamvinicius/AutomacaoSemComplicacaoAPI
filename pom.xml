@@ -17,14 +17,14 @@
 			<version>5.7.1</version>
 			<scope>test</scope>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-engine</artifactId>
 			<version>5.7.1</version>
 			<scope>test</scope>
 		</dependency>
-		
+
 
 		<dependency>
 			<groupId>io.rest-assured</groupId>
@@ -33,6 +33,11 @@
 			<scope>test</scope>
 		</dependency>
 
+		<dependency>
+			<groupId>io.rest-assured</groupId>
+			<artifactId>json-schema-validator</artifactId>
+			<version>4.3.3</version>
+		</dependency>
 
 
 	</dependencies>
