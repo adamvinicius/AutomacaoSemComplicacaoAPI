@@ -12,6 +12,10 @@ import entidades.Documento;
 import entidades.Header;
 import entidades.JsonPlaceHolder;
 import entidades.Login;
+import entidadesMap.JsonPlaceHolderMap;
+import entidadesMap.LoginMap;
+import massas.JsonPlaceHolderMapMassa;
+import massas.JsonPlaceHolderMassa;
 import utils.RestUtils;
 
 class JsonPlaceHolderPostHeaderTest {
@@ -117,6 +121,52 @@ class JsonPlaceHolderPostHeaderTest {
 		assertEquals("Adam Vinicius", RestUtils.getResponse("nome"));
 		assertEquals(201, RestUtils.getStatusCode());
 	}
+	
+	@Test
+	void postHeaderTokenMassaTest() {
+		Login login = JsonPlaceHolderMassa.login;
+		
+		RestUtils.setBaseUri(JsonPlaceHolderMassa.url);
+		RestUtils.postRequest(JsonPlaceHolderMassa.endpoint, login);
+		
+		JsonPlaceHolderMassa.token = RestUtils.getResponse("token").toString();
+		
+		JsonPlaceHolderMassa.addDocumentos();
+		
+		Header header = JsonPlaceHolderMassa.header;
+		header.setHeader("Authorization", JsonPlaceHolderMassa.token);
+		
+		JsonPlaceHolder json = JsonPlaceHolderMassa.jsonPlaceHolder;
+		
+		RestUtils.postRequest(JsonPlaceHolderMassa.endpoint, header.getHeader(), json);
+		
+		assertEquals("Adam Vinicius", RestUtils.getResponse("nome"));
+		assertEquals(201, RestUtils.getStatusCode());
+		
+	}
+	
+	@Test
+	void postHeaderTokenMapMassaTest() {
+		LoginMap loginMap = JsonPlaceHolderMapMassa.login;
+		
+		RestUtils.setBaseUri(JsonPlaceHolderMapMassa.url);
+		RestUtils.postRequest(JsonPlaceHolderMapMassa.endpoint, loginMap.getLoginMap());
+		
+		JsonPlaceHolderMapMassa.token = (String) RestUtils.getResponse("token");
+		
+		JsonPlaceHolderMapMassa.addDocumentos();
+		
+		Header header = JsonPlaceHolderMapMassa.header;
+		header.setHeader("Authorization", JsonPlaceHolderMapMassa.token);
+		
+		JsonPlaceHolderMap jsonMap = JsonPlaceHolderMapMassa.jsonPlaceHolderMap;
+		
+		RestUtils.postRequest(JsonPlaceHolderMapMassa.endpoint, header.getHeader(), jsonMap.getJsonPlaceHolderMap());
+		
+		assertEquals("Adam Vinicius", RestUtils.getResponse("nome"));
+		assertEquals(201, RestUtils.getStatusCode());
+	}
+		
 	
 	
 

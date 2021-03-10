@@ -6,7 +6,6 @@ public class Login {
 	private Object token;
 	
 	
-	
 	public Login(Object usuario, Object senha, Object token) {
 		this.usuario = usuario;
 		this.senha = senha;

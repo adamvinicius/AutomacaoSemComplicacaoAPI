@@ -13,6 +13,11 @@ public class Header {
 		
 	}
 	
+	public Header(String authorization) {
+		header.put("Authorization", authorization);
+	}
+	
+	
 	public LinkedHashMap<String, String> getHeader() {
 		return header;
 	}
