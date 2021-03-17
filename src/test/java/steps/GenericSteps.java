@@ -23,6 +23,11 @@ public class GenericSteps {
 	    assertEquals("Quantidade de caracteres incorreta:",quantidade, tamanho);
 	    
 	}
+	
+	
+
+
+
 
 
 
