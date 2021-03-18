@@ -14,11 +14,20 @@ public class JsonPlaceHolderMassa {
 	public static String endpoint = "posts";
 	public static String token = "";
 	
-	public static Login login = new Login("adam", "123456", "2fa3e708-7840-481f-bf57-8f6ff1f5ce2c");
-	public static Documento documento = new Documento("cpf", "3454215412");
-	public static List<Documento> documentos = new ArrayList<>();
-	public static JsonPlaceHolder jsonPlaceHolder = new JsonPlaceHolder("xptqoaa", "Adam Vinicius", 32, null);
-	public static Header header = new Header(null);
+	public static Login login;
+	public static Documento documento;
+	public static List<Documento> documentos;
+	public static JsonPlaceHolder jsonPlaceHolder;
+	public static Header header;
+	
+	public static void inicializaJsonPlaceHolderMassa() {
+		login = new Login("adam", "123456", "2fa3e708-7840-481f-bf57-8f6ff1f5ce2c");
+		documento = new Documento("cpf", "3454215412");
+		documentos = new ArrayList<>();
+		jsonPlaceHolder = new JsonPlaceHolder("xptqoaa", "Adam Vinicius", 32, null);
+		header = new Header(null);
+		addDocumentos();
+	}
 	
 	public static void addDocumentos() {
 		documentos.add(documento);

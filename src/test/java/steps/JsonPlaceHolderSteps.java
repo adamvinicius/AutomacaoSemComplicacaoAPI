@@ -19,7 +19,9 @@ public class JsonPlaceHolderSteps {
 	
 	@Dado("que sejam preenchidos os campos do JsonPlaceHolder")
 	public void queSejamPreenchidosOsCamposDoJsonPlaceHolder() {
-	    url = JsonPlaceHolderMassa.url;
+	    JsonPlaceHolderMassa.inicializaJsonPlaceHolderMassa();
+	    
+		url = JsonPlaceHolderMassa.url;
 	    endpoint = JsonPlaceHolderMassa.endpoint;
 	    token = "Bearer "+JsonPlaceHolderMassa.token;
 	    header = JsonPlaceHolderMassa.header;
@@ -37,6 +39,7 @@ public class JsonPlaceHolderSteps {
 	@Quando("for realizado uma requisicao do tipo POST do JsonPlaceHolder")
 	public void forRealizadoUmaRequisicaoDoTipoPOSTDoJsonPlaceHolder() {
 	    RestUtils.postRequest(endpoint, header.getHeader(), jsonPlaceHolder);
+	    System.out.println(RestUtils.getBody());
 	}
 	
 

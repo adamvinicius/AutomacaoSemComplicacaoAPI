@@ -19,6 +19,8 @@ public class JsonPlaceHolderMapSteps {
 	
 	@Dado("que sejam preenchidos os campos do JsonPlaceHolderMap")
 	public void queSejamPreenchidosOsCamposDoJsonPlaceHolderMap() {
+		JsonPlaceHolderMapMassa.inicializaJsonPlaceHolderMapMassa();
+		
 	    url = JsonPlaceHolderMapMassa.url;
 	    endpoint = JsonPlaceHolderMapMassa.endpoint;
 	    token = "Bearer "+JsonPlaceHolderMapMassa.token;
@@ -37,6 +39,7 @@ public class JsonPlaceHolderMapSteps {
 	@Quando("for realizado uma requisicao do tipo POST do JsonPlaceHolderMap")
 	public void forRealizadoUmaRequisicaoDoTipoPOSTDoJsonPlaceHolderMap() {
 	    RestUtils.postRequest(endpoint, header.getHeader(), jsonPlaceHolderMap.getJsonPlaceHolderMap());
+	    System.out.println(RestUtils.getBody());
 	}
 
 

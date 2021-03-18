@@ -15,7 +15,9 @@ public class TokenSteps {
 	
 	@Dado("que sejam preenchidos os campos para autenticacao")
 	public void queSejamPreenchidosOsCamposParaAutenticacao() {
-	    url = JsonPlaceHolderMassa.url;
+	    JsonPlaceHolderMassa.inicializaJsonPlaceHolderMassa();
+		
+		url = JsonPlaceHolderMassa.url;
 	    endpoint = JsonPlaceHolderMassa.endpoint;
 	    login = JsonPlaceHolderMassa.login;
 	    
